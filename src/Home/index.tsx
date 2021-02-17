@@ -26,7 +26,7 @@ export default function Home() {
   const [ colorStatus, setColorStatus ] = useState('#38CC78');
 
   function Calcular(){
-    if(pesoInput ===  '0'|| alturaInput === '0'){
+    if(pesoInput ===  '0' || alturaInput === '0' || pesoInput === '' || alturaInput === ''){
       Alert.alert('Peso ou altura vazios');
       return 0;
     };
@@ -36,7 +36,7 @@ export default function Home() {
 
 
       // //baixo peso
-      if(IMC >= 16 && IMC <= 18.49){
+      if(IMC <= 18.49){
 
         setColorStatus('orange');
 
@@ -45,7 +45,7 @@ export default function Home() {
         } else {
           setStatus('Baixo peso I');
         }
-
+        return 0;
       };
 
       // //peso normal
@@ -102,6 +102,7 @@ export default function Home() {
       <ViewPeso>
         <TextPeso>Seu Peso</TextPeso>
         <InputPeso
+          value={pesoInput}
           placeholder="60kg"
           keyboardType= "numeric"
           onChangeText={text => setPesoInput(text)}
@@ -111,6 +112,7 @@ export default function Home() {
       <ViewAltura>
         <TextPeso>Sua Altura</TextPeso>
         <InputPeso
+          value={alturaInput}
           placeholder="1.83"
           keyboardType= "numeric"
           onChangeText={text => setAlturaInput(text)}
